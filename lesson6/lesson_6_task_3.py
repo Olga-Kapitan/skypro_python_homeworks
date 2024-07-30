@@ -17,4 +17,4 @@ src = browser.find_element(By.CSS_SELECTOR, "#award").get_attribute("src")
 
 print(src)
 
-browser.quit
+browser.quit()

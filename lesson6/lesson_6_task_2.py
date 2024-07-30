@@ -12,4 +12,4 @@ txt_button = browser.find_element(By.CSS_SELECTOR, "#updatingButton").text
 
 print(txt_button)
 
-browser.quit
+browser.quit()
