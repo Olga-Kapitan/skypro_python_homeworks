@@ -1,12 +1,12 @@
 # from time import sleep
-from selenium import webdriver
+# from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-def test_calculator():
-    browser = webdriver.Chrome()
+def test_calculator(browser):
+    # browser = webdriver.Chrome()
     browser.get(
         "https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html")
     browser.find_element(By.CSS_SELECTOR, "#delay").clear()
@@ -23,4 +23,4 @@ def test_calculator():
     result = browser.find_element(By.CSS_SELECTOR, 'div.screen').text
     assert "15" in result
     print(result)
-    browser.quit()
+    # browser.quit()
