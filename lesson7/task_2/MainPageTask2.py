@@ -27,4 +27,4 @@ class MainPageTask2:
                 By.CSS_SELECTOR, 'div.screen'), "15"))
 
     def txt(self):
-        self._driver.find_element(By.CSS_SELECTOR, 'div.screen').text
+        return self._driver.find_element(By.CSS_SELECTOR, 'div.screen').text

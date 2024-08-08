@@ -1,16 +1,16 @@
 # from time import sleep
 from selenium import webdriver
-from task_3.MainPageTask3 import MainPageTask3
-from task_3.Products import Products
-from task_3.Cart import YourCart
-from task_3.DataOrder import Data
-from task_3.CheckoutOverview import CheckoutOverview
+from task_three.MainPage import MainPage
+from task_three.Products import Products
+from task_three.Cart import YourCart
+from task_three.DataOrder import Data
+from task_three.Check import Checkout
 
 
-def shopping():
+def test_shopping():
     browser = webdriver.Chrome()
 
-    main_page = MainPageTask3(browser)
+    main_page = MainPage(browser)
     main_page.authorization()
 
     product = Products(browser)
@@ -24,7 +24,7 @@ def shopping():
     data.data_order()
     data.continue_button()
 
-    check = CheckoutOverview(browser)
+    check = Checkout(browser)
     total = check.summary_total()
     assert '58.29' in total
 
