@@ -1,4 +1,4 @@
-import requests
+# import requests
 import random
 from Employee import Employee
 
@@ -65,12 +65,13 @@ def test_get_employee_to_id():
             "birthdate": "1989-08-18T11:19:57.377Z",
             "isActive": True
         }
-    id_employee = (api.add_new_employee(parameters))['id']
-
+    new_employee = api.add_new_employee(parameters)
+    id_employee = new_employee["id"]
     body = api.get_employee_to_id(id_employee)
-    
-    # assert body["firstName"] == "Georgie" - ошибка key
-    # assert body["lastName"] == "Cruz"
+    print(body)
+    assert body["firstName"] == "Georgie"
+    assert body["lastName"] == "Cruz"
+    assert id_employee == body['id']
 
 
 # изменить инфо о сотруднике
@@ -89,14 +90,16 @@ def test_edit():
             "birthdate": "1989-08-18T11:19:57.377Z",
             "isActive": True
     }
-    id_employee = (api.add_new_employee(parameters_emp1))['id']
+    employee_emp1 = api.add_new_employee(parameters_emp1)
+    id_employee = employee_emp1["id"]
     parameters_emp2 = {
-            "lastName": "Gross",
-            "email": "joiboog@huwnidji.dm",
-            "url": "",
-            "phone": "445859",
-            "isActive": True
+        "lastName": "Gross",
+        "email": "joiboog@huwnidji.dm",
+        "url": "",
+        "phone": "445859",
+        "isActive": True
         }
-    new_id_employee = api.edit(id_employee, parameters_emp2)
-
-    # assert new_id_employee["lastName"] != "Cruz"
+    new_employee = api.edit(id_employee, parameters_emp2)
+    print(new_employee)
+    assert new_employee["email"] == "joiboog@huwnidji.dm"
+    assert new_employee["isActive"] == True

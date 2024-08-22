@@ -37,14 +37,14 @@ class Employee:
             self.url + '/employee', headers=my_headers, json=parameters)
         return resp.json()
 
-    def get_employee_to_id(self, id_employee):
-        resp = requests.get(self.url + '/employee' + str(id_employee))
+    def get_employee_to_id(self, id):
+        resp = requests.get(self.url + '/employee/' + str(id))
         return resp.json()
 
     def edit(self, id_employee, parameters):
         my_headers = {}
         my_headers["x-client-token"] = self.get_token()
         resp = requests.patch(
-            self.url + '/employee' + str(
+            self.url + '/employee/' + str(
                 id_employee), headers=my_headers, json=parameters)
         return resp.json()

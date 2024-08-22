@@ -1,6 +1,9 @@
 # selenium 4.23.1
-pip install selenium
+pip install selenium==4.23.1
 
 pip install pytest
 pip install webdriver-manager
 pip install requests
+
+pip install SQLAlchemy==1.4.50
+pip install psycopg2-binary
