@@ -15,17 +15,6 @@ class Employee:
         resp = requests.post(self.url + '/auth/login', json=creds)
         return resp.json()['userToken']
 
-    def create_company(self, name, description):
-        company = {
-            'name': name,
-            'description': description
-        }
-        my_headers = {}
-        my_headers["x-client-token"] = self.get_token()
-        resp = requests.post(
-            self.url + '/company', json=company, headers=my_headers)
-        return resp.json()
-
     def get_employee_list(self, id):
         resp = requests.get(self.url + '/employee?company=' + str(id))
         return resp.json()
@@ -41,7 +30,7 @@ class Employee:
         resp = requests.get(self.url + '/employee/' + str(id))
         return resp.json()
 
-    def edit(self, id_employee, parameters):
+    def edit_employee(self, id_employee, parameters):
         my_headers = {}
         my_headers["x-client-token"] = self.get_token()
         resp = requests.patch(
