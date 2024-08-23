@@ -51,11 +51,13 @@ class CompanyApi:
     def delete(self, id):
         my_headers = {}
         my_headers["x-client-token"] = self.get_token()
-        resp = requests.get(self.url + '/company/delete/' + str(id), headers=my_headers)
+        resp = requests.get(
+            self.url + '/company/delete/' + str(id), headers=my_headers)
         return resp.json()
 
     def set_active_state(self, id, isActive):
         my_headers = {}
         my_headers["x-client-token"] = self.get_token()
-        resp = requests.patch(self.url + '/company/status/' + str(id), headers=my_headers, json={"isActive": isActive})
+        resp = requests.patch(
+            self.url + '/company/status/' + str(id), headers=my_headers, json={"isActive": isActive})
         return resp.json()

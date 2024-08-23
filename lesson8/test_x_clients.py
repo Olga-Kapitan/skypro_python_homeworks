@@ -48,6 +48,7 @@ def test_add_new_employee():
 
     list_after = emp_api.get_employee_list(id_company)
 
+    # emp_api.delete_employee(id_employee)
     comp_api.delete(id_company)
 
     assert len(list_after) - len(list_before) == 1

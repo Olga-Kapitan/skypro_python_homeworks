@@ -37,3 +37,10 @@ class Employee:
             self.url + '/employee/' + str(
                 id_employee), headers=my_headers, json=parameters)
         return resp.json()
+
+    # def delete_employee(self, id_employee):
+    #     my_headers = {}
+    #     my_headers["x-client-token"] = self.get_token()
+    #     resp = requests.get(
+    #         self.url + '/employee/delete/' + str(id), headers=my_headers)
+    #     return resp.json()
