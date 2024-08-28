@@ -30,7 +30,7 @@ class CompanyTable:
         return self.__db.execute(
             self.__scripts["delete by id"], id_to_delete=id)
 
-    def create(self, name):
+    def create_company(self, name):
         return self.__db.execute(self.__scripts["insert_new"], new_name=name)
 
     def get_max_id_company(self):
