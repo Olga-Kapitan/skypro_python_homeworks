@@ -60,25 +60,22 @@ def test_add_new_employee():
 # получить сотрудника по id
 def test_get_employee_to_id():
     comp_api.create_company(random.choice(name), random.choice(descr))
-    max_id = emp_db.max_id_comp()
-    # id_company = company["id"]
-    # попробовать по api
-    # select max(id) from  company - найти по макс!!
+    max_id = comp_db.get_max_id_company()
 
     name_e = fake.first_name()
     surname_e = fake.last_name()
-    my_phone_e = fake.phone_number()
+    my_phone_e = fake.postcode()
 
     emp_db.create_employee(max_id, name_e, surname_e, my_phone_e)
-    id_employee = emp_db.get_list_employee(max_id)
+    id_employee = emp_db.max_id_emp(max_id)
     body_db = emp_db.get_employee_by_id(id_employee)
 
     body_api = emp_api.get_employee_to_id(id_employee)
 
-    assert body_api["id"] == body_db["id"]
-    assert body_db["firstName"] == name_e
-    assert body_db["lastName"] == surname_e
-    assert body_db["phone"] == my_phone_e
+    assert body_db[0][0] == body_api["id"]
+    assert body_db[0]["firstName"] == name_e
+    assert body_db[0]["lastName"] == surname_e
+    assert body_db[0]["phone"] == my_phone_e
 
     emp_db.delete_employee(id_employee)
     comp_api.delete_company(max_id)
@@ -97,8 +94,6 @@ def test_edit_employee():
     id_employee = emp_db.get_list_employee(id_company)
     body_db = id_employee[0]["id"]
     boby_db_edited = emp_db.edit_employee(id_employee, 'Richards')
-    print(body_db)
-    print(boby_db_edited)
 
     assert id_employee["last_name"] == 'Richards'
 

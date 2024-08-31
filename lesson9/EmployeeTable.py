@@ -9,7 +9,6 @@ class EmployeeTable:
         "update": text('update employee set last_name =:last_name where id = :id_employee'),
         "select by id": text('select * from employee where id = :id_employee'),
         "select list": text("select * from employee where company_id = :company_id"),
-        "max_id_comp": text("select max(id) from company"),
         "max_id_emp": text("select max(id) from employee where company_id =:company_id")
     }
 
@@ -39,10 +38,6 @@ class EmployeeTable:
     def get_list_employee(self, comp_id):
         return self.__db.execute(
             self.__scripts["select list"], company_id=comp_id).fetchall()
-
-    def max_id_comp(self):
-        return self.__db.execute(
-            self.__scripts["max_id_comp"]).fetchall()[0][0]
 
     def max_id_emp(self, id):
         return self.__db.execute(
